@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
         >
           <main className="flex flex-col  min-h-svh min-w-80 ">
             <div className="flex-grow flex-1">

@@ -5,8 +5,8 @@ import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   return (
-    <nav className="fixed start-0 top-0 z-20 hidden w-full border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-900  md:flex md:flex-row md:justify-between">
-      <div className="mx-auto flex w-fit max-w-screen-xl flex-row  flex-wrap items-center justify-between gap-4 p-4">
+    <nav className="fixed start-0 top-0 z-20 h-10 w-full border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-900  md:flex md:flex-row md:justify-center">
+      <div className=" flex w-fit max-w-screen-xl flex-row  flex-wrap items-center justify-start gap-4 px-2">
         {linkData.map((item) => (
           <Link
             key={item.name}
@@ -18,7 +18,7 @@ export default function Navbar() {
         ))}
       </div>
 
-      <div className="mx-auto flex w-fit max-w-screen-xl flex-row  flex-wrap items-center justify-between gap-4 p-4">
+      <div className="mx-auto hidden w-fit max-w-screen-xl flex-row flex-wrap  items-center justify-between gap-4 p-4 md:flex">
         {socialData.map((item) => (
           <Link
             key={item.name}
