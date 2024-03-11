@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:icons": "npx tsx ./build-icons.mts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -32,8 +33,15 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@sly-cli/sly": "^1.10.0",
+    "@types/fs-extra": "^11.0.4",
     "autoprefixer": "^10.0.1",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.3.10",
+    "node-html-parser": "^6.1.12",
     "postcss": "^8",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.12",
     "tailwindcss": "^3.3.0"
   }
 }

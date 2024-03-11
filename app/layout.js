@@ -1,18 +1,29 @@
-import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { Poppins } from 'next/font/google';
 import "./globals.css";
+import Navbar from "./_components/Navbar";
+import { PreloadSprite } from "@/components/PreloadSprite";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ["latin"], weight: ['400', '700'] });
 
 export const metadata = {
   // TODO -this is a working title and desc.
-  title: "Fasion-Bug",
+  title: "Fashion-Bug",
   description: "Online Clothing Store",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <PreloadSprite />
+      <body className={cn('relative h-full font-sans antialiased', poppins.className)}>
+        <main className="flex flex-col  min-h-svh min-w-80 ">
+          <div className="flex-grow flex-1">
+            <Navbar />
+            {children}
+          </div>
+        </main>
+      </body>
     </html>
   );
 }
