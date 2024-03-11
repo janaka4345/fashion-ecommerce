@@ -8,5 +8,7 @@ export type IconName =
 	| "log-in"
 	| "log-out"
 	| "moon"
+	| "search"
+	| "shopping-cart"
 	| "sun"
 	| "twitter";
