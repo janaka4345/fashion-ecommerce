@@ -3,15 +3,13 @@
   "libraries": [
     {
       "name": "lucide-icons",
-      "directory": "./other",
-      "postinstall": [
-        "./other"
-      ],
+      "directory": "./other/svg",
+      "postinstall": [],
       "transformers": []
     },
     {
       "name": "@radix-ui/icons",
-      "directory": "./components",
+      "directory": "./other/svg",
       "postinstall": [],
       "transformers": []
     }

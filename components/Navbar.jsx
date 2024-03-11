@@ -1,6 +1,7 @@
 import { Icon } from "@/components/Icons";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   return (
@@ -29,6 +30,7 @@ export default function Navbar() {
           </Link>
         ))}
       </div>
+      <ThemeToggle />
     </nav>
   );
 }
