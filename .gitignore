@@ -10,6 +10,7 @@
 /coverage
 inspiration.txt
 /app/test*
+/TODO*.txt
 
 # next.js
 /.next/
