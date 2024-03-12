@@ -2,9 +2,9 @@ import { Icon } from "./Icons";
 
 export default function Header() {
   return (
-    <div className="mt-12 flex flex-row items-center justify-between gap-2">
+    <section className="flex flex-row items-center justify-between gap-2 bg-red-500  pt-10">
       <div className=" w-1/3 ">
-        <form className="mx-auto max-w-md">
+        <form className="mx-auto max-w-md px-4">
           <label
             htmlFor="default-search"
             className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -18,7 +18,7 @@ export default function Header() {
             <input
               type="search"
               id="default-search"
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 py-4 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               placeholder="Search Mockups, Logos..."
               required
             />
@@ -31,10 +31,10 @@ export default function Header() {
           </div>
         </form>
       </div>
-      <div className=" h-40 w-1/3 bg-green-500 "></div>
+      <div className=" h-40 w-1/3 bg-green-500 ">logo</div>
       <div className=" w-1/3 ">
         <Icon className=" h-10 w-10" name="shopping-cart" />
       </div>
-    </div>
+    </section>
   );
 }

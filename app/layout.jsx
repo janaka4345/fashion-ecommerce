@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google';
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Socials from "@/components/Socials";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ['400', '700'] });
 
@@ -21,9 +22,10 @@ export default function RootLayout({ children }) {
           defaultTheme="system"
           enableSystem
         >
-          <main className="flex flex-col  min-h-svh min-w-80 ">
+          <main className="flex flex-col   ">
             <div className="flex-grow flex-1">
               <Navbar />
+              <Socials />
               {children}
             </div>
           </main>
