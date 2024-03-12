@@ -10,7 +10,7 @@ export default function Navbar() {
         {linkData.map((item) => (
           <Link
             key={item.name}
-            className={buttonVariants({ variant: "link" })}
+            className={buttonVariants({ variant: "ghost" })}
             href={item.href}
           >
             {item.name}

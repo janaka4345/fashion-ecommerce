@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
-import { Poppins } from 'next/font/google';
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Socials from "@/components/Socials";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ['400', '700'] });
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata = {
   // TODO -this is a working title and desc.
@@ -16,14 +16,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={cn('relative h-full font-sans antialiased', poppins.className)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-        >
+      <body
+        className={cn(
+          "relative h-full  font-sans antialiased",
+          poppins.className,
+        )}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main className="flex flex-col   ">
-            <div className="flex-grow flex-1">
+            <div className="flex-1 flex-grow">
               <Navbar />
               <Socials />
               {children}
