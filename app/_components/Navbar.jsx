@@ -1,7 +1,7 @@
 import { Icon } from "@/components/Icons";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Navbar() {
   return (

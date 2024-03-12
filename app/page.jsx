@@ -1,5 +1,5 @@
-import Banner from "@/components/Banner";
-import Header from "@/components/Header";
+import Banner from "./_components/Banner";
+import Header from "./_components/Header";
 import Wrapper from "@/components/Wrapper";
 
 export default function Home() {

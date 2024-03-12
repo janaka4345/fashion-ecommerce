@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
-import { Icon } from "./Icons";
+import { buttonVariants } from "@/components/ui/button";
+import { Icon } from "@/components/Icons";
 
 export default function Socials() {
   return (
-    <div className="fixed right-0 top-1/2 mx-auto flex w-fit flex-col flex-wrap  items-center justify-between gap-4 bg-pink-700 ">
+    <div className="fixed right-0 top-1/2 z-20  mx-auto flex w-fit flex-col flex-wrap  items-center justify-between gap-4 bg-pink-700 ">
       {socialData.map((item) => (
         <Link
           key={item.name}

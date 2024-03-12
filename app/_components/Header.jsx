@@ -1,4 +1,4 @@
-import { Icon } from "./Icons";
+import { Icon } from "../../components/Icons";
 import Menubar from "./Menubar";
 
 export default function Header() {
