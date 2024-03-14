@@ -55,7 +55,7 @@ const components = [
 
 export default function Menubar() {
   return (
-    <NavigationMenu className="flex w-[80svw] flex-row flex-wrap">
+    <NavigationMenu className=" hidden w-[80svw] flex-row flex-wrap sm:flex">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
