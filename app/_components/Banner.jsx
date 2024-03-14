@@ -10,13 +10,13 @@ export default function Banner() {
   return (
     <section className="flex  w-full flex-row gap-4 bg-green-200 ">
       <div className="w-1/2">hi</div>
-      <div className="w-1/2">
+      <div className="mx-8 w-1/2">
         <Carousel className=" w-full">
-          <CarouselContent className="w-full ">
+          <CarouselContent className="">
             {Array.from({ length: 5 }).map((_, index) => (
               <CarouselItem key={index}>
                 <div className=" p-1 ">
-                  <Card className="m-0 h-96">
+                  <Card className="m-0 h-80">
                     <CardContent className="flex  items-center justify-center p-6">
                       <span className="text-4xl font-semibold">
                         {index + 1}
