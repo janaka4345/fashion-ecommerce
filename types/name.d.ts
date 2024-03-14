@@ -7,8 +7,10 @@ export type IconName =
 	| "instagram"
 	| "log-in"
 	| "log-out"
+	| "menu"
 	| "moon"
 	| "search"
 	| "shopping-cart"
+	| "star"
 	| "sun"
 	| "twitter";

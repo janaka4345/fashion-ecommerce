@@ -31,6 +31,11 @@
   <polyline points="16 17 21 12 16 7" ></polyline>
   <line x1="21" x2="9" y1="12" y2="12" ></line>
 </symbol>
+<symbol viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="menu">
+  <line x1="4" x2="20" y1="12" y2="12" ></line>
+  <line x1="4" x2="20" y1="6" y2="6" ></line>
+  <line x1="4" x2="20" y1="18" y2="18" ></line>
+</symbol>
 <symbol viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="moon">
   <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" ></path>
 </symbol>
@@ -42,6 +47,10 @@
   <circle cx="8" cy="21" r="1" ></circle>
   <circle cx="19" cy="21" r="1" ></circle>
   <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" ></path>
+</symbol>
+<symbol viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="star">
+    <path 
+        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" ></path>
 </symbol>
 <symbol viewBox="0 0 15 15" fill="none" id="sun">
   <path     fill-rule="evenodd"
