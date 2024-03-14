@@ -11,6 +11,8 @@
 inspiration.txt
 /app/test*
 /TODO*.txt
+/app/test*
+/public/testApple
 
 # next.js
 /.next/

@@ -3,8 +3,8 @@ import Menubar from "./Menubar";
 
 export default function Header() {
   return (
-    <section className="flex flex-col  ">
-      <div className="flex flex-row items-center justify-between gap-2 bg-red-500  pt-10">
+    <section className=" flex flex-col flex-wrap   bg-red-500">
+      <div className="flex flex-row  items-center justify-between gap-2 ">
         <div className=" w-1/3 ">
           <form className="mx-auto max-w-md px-4">
             <label
