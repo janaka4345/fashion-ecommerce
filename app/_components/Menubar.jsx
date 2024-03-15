@@ -55,12 +55,12 @@ const components = [
 
 export default function Menubar() {
   return (
-    <NavigationMenu className=" hidden w-[80svw] flex-row flex-wrap sm:flex">
-      <NavigationMenuList>
+    <NavigationMenu className="mx-auto hidden  flex-row    bg-blue-400 sm:flex">
+      <NavigationMenuList className="w-[70svw] items-center justify-evenly gap-4">
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="px-8">Shops</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+            <ul className="grid min-h-[50svh] w-[70svw] gap-3 bg-yellow-300  p-4 md:grid-cols-2 ">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
@@ -91,9 +91,9 @@ export default function Menubar() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="px-8">Gents</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+            <ul className="grid min-h-[50svh] w-[70svw] gap-3 bg-yellow-300  p-4 md:grid-cols-2 ">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
@@ -107,11 +107,52 @@ export default function Menubar() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuTrigger className="px-8">Ladies</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid min-h-[50svh] w-[70svw] gap-3 bg-yellow-300  p-4 md:grid-cols-2">
+              {components.map((component) => (
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  href={component.href}
+                >
+                  {component.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger className="px-8">Bags</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid min-h-[50svh] w-[70svw] gap-3 bg-yellow-300  p-4 md:grid-cols-2">
+              {components.map((component) => (
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  href={component.href}
+                >
+                  {component.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger className="px-8">Other</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid min-h-[50svh] w-[70svw] gap-3 bg-yellow-300  p-4 md:grid-cols-2">
+              {components.map((component) => (
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  href={component.href}
+                >
+                  {component.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
