@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -36,56 +37,34 @@ export default function CustomCarousel() {
           }),
         ]}
         setApi={setApi}
-        className="mx-auto mt-14    bg-red-500"
+        className="mx-auto  bg-red-500"
       >
         {/* <!-- Carousel wrapper --> */}
-        <CarouselContent className=" relative  h-[60svh] w-fit rounded-lg">
-          {/* <!-- Item 1 --> */}
-          <CarouselItem className="  duration-700 ease-in-out">
-            <img
-              src="/carousel-1.svg"
-              className=" h-full w-full object-cover"
-              alt="images"
-            />
-          </CarouselItem>
-          {/* <!-- Item 2 --> */}
-          <CarouselItem className="  duration-700 ease-in-out">
-            <img
-              src="/carousel-2.svg"
-              className="ml-4 h-full w-full object-cover"
-              alt="images"
-            />
-          </CarouselItem>
-          {/* <!-- Item 3 --> */}
-          <CarouselItem className="  duration-700 ease-in-out">
-            <img
-              src="/carousel-3.svg"
-              className="ml-4 h-full w-full object-cover"
-              alt="images"
-            />
-          </CarouselItem>
-          {/* <!-- Item 4 --> */}
-          <CarouselItem className="  duration-700 ease-in-out">
-            <img
-              src="/carousel-4.svg"
-              className="ml-4 h-full w-full object-cover"
-              alt="images"
-            />
-          </CarouselItem>
-          {/* <!-- Item 5 --> */}
-          <CarouselItem className="  duration-700 ease-in-out">
-            <img
-              src="/carousel-5.svg"
-              className="ml-4 h-full w-full object-cover"
-              alt="images"
-            />
-          </CarouselItem>
+        <CarouselContent className=" relative ml-0  h-[30svh] w-full  rounded-lg sm:h-[70svh]">
+          {/* <!-- Items --> */}
+          {carousalItems.map((item) => (
+            <CarouselItem
+              key={item.id}
+              className="relative duration-700 ease-in-out"
+            >
+              <Image
+                fill
+                src={item.src}
+                className=" h-full w-full object-cover"
+                alt="images"
+              />
+            </CarouselItem>
+          ))}
         </CarouselContent>
-        <div className="relative flex h-5 w-full justify-center bg-green-500">
-          <CarouselPrevious className="left-1/4 border-none bg-transparent" />
+        <div className="relative flex h-5 w-full justify-center bg-yellow-500">
+          <CarouselPrevious
+            variant="none"
+            className=" relative border-none bg-transparent"
+          />
           <div className=" flex items-center justify-center space-x-3">
             {[...Array(count)].map((_, i) => (
               <button
+                key={i}
                 onClick={() => {
                   console.log(api);
                   api.scrollTo(i);
@@ -95,35 +74,39 @@ export default function CustomCarousel() {
                   "w-4 bg-gray-800": current === i + 1,
                   "w-3 bg-gray-500": current != i + 1,
                 })}
-                aria-label="Slide 1"
+                aria-label={`slide${i}`}
               ></button>
             ))}
-
-            {/* <button
-              onClick={() => api.scrollTo(1)}
-              type="button"
-              className="h-3 w-3 rounded-full bg-red-500"
-              aria-label="Slide 2"
-            ></button>
-             <button
-              type="button"
-              className="h-3 w-3 rounded-full bg-black"
-              aria-label="Slide 3"
-            ></button>
-            <button
-              type="button"
-              className="h-3 w-3 rounded-full bg-black"
-              aria-label="Slide 4"
-            ></button>
-            <button
-              type="button"
-              className="h-3 w-3 rounded-full bg-black"
-              aria-label="Slide 5"
-            ></button> */}
           </div>
-          <CarouselNext className="left-3/4 border-none bg-transparent" />
+          <CarouselNext
+            variant="none"
+            className="relative border-none bg-transparent"
+          />
         </div>
       </Carousel>
     </>
   );
 }
+
+const carousalItems = [
+  {
+    id: 1,
+    src: "/carousel-1.svg",
+  },
+  {
+    id: 2,
+    src: "/carousel-2.svg",
+  },
+  {
+    id: 3,
+    src: "/carousel-3.svg",
+  },
+  {
+    id: 4,
+    src: "/carousel-4.svg",
+  },
+  {
+    id: 5,
+    src: "/carousel-5.svg",
+  },
+];
