@@ -8,11 +8,11 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <Wrapper>
+      <Wrapper >
         <Header />
         <Banner />
+        <Categories />
       </Wrapper>
-      <Categories />
       <Wrapper className="my-5 max-h-[80svh] min-h-[60svh] bg-blue-400">
         <section>
           <h1>Featured Products</h1>
