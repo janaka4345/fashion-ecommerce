@@ -17,6 +17,8 @@ export function Icon({ name, childClassName, className, children, ...props }) {
       className={cn("inline h-[1em] w-[1em] self-center", className)}
     >
       <use href={`http://localhost:3000/icons/sprite.svg#${name}`} />
+      {/* <use href={`http://192.168.1.4:3000/icons/sprite.svg#${name}`} /> */}
+
       {/* must give a full url to work */}
     </svg>
   );
