@@ -36,7 +36,7 @@ export default function CustomCarousel() {
           }),
         ]}
         setApi={setApi}
-        className="mx-auto mt-14 w-1/2   bg-red-500"
+        className="mx-auto mt-14    bg-red-500"
       >
         {/* <!-- Carousel wrapper --> */}
         <CarouselContent className=" relative  h-[60svh] w-fit rounded-lg">
