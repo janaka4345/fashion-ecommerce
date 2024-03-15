@@ -55,12 +55,12 @@ const components = [
 
 export default function Menubar() {
   return (
-    <NavigationMenu className="mx-auto hidden  flex-row    bg-blue-400 sm:flex">
-      <NavigationMenuList className="w-[70svw] items-center justify-evenly gap-4">
+    <NavigationMenu className="mx-auto my-4 w-[calc(100svw-32px)]  flex-row bg-blue-400    sm:flex sm:px-6">
+      <NavigationMenuList className="mx-auto flex  w-[calc(100svw-32px)] items-center  justify-start gap-2 overflow-x-scroll px-4 sm:justify-center ">
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="px-8">Shops</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="px-6">Shops</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid min-h-[50svh] w-[70svw] gap-3 bg-yellow-300  p-4 md:grid-cols-2 ">
+            <ul className="grid min-h-[50svh]  w-[calc(100svw-32px)] gap-3 bg-yellow-300  p-4 md:grid-cols-2 ">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
@@ -91,9 +91,9 @@ export default function Menubar() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="px-8">Gents</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="px-6">Gents</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid min-h-[50svh] w-[70svw] gap-3 bg-yellow-300  p-4 md:grid-cols-2 ">
+            <ul className="grid min-h-[50svh]  w-[calc(100svw-32px)] gap-3 bg-yellow-300  p-4 md:grid-cols-2 ">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
@@ -107,9 +107,9 @@ export default function Menubar() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="px-8">Ladies</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="px-6">Ladies</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid min-h-[50svh] w-[70svw] gap-3 bg-yellow-300  p-4 md:grid-cols-2">
+            <ul className="grid min-h-[50svh]  w-[calc(100svw-32px)] gap-3 bg-yellow-300  p-4 md:grid-cols-2">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
@@ -123,9 +123,9 @@ export default function Menubar() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="px-8">Bags</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="px-6">Bags</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid min-h-[50svh] w-[70svw] gap-3 bg-yellow-300  p-4 md:grid-cols-2">
+            <ul className="grid min-h-[50svh]  w-[calc(100svw-32px)] gap-3 bg-yellow-300  p-4 md:grid-cols-2">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
@@ -139,9 +139,25 @@ export default function Menubar() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="px-8">Other</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="px-6">Shoes</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid min-h-[50svh] w-[70svw] gap-3 bg-yellow-300  p-4 md:grid-cols-2">
+            <ul className="grid min-h-[50svh]  w-[calc(100svw-32px)] gap-3 bg-yellow-300  p-4 md:grid-cols-2">
+              {components.map((component) => (
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  href={component.href}
+                >
+                  {component.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger className="px-6">Other</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid min-h-[50svh]  w-[calc(100svw-32px)] gap-3 bg-yellow-300  p-4 md:grid-cols-2">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
