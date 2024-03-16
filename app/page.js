@@ -11,12 +11,12 @@ export default function Home() {
       <Wrapper >
         <Header />
         <Banner />
-        <Categories />
       </Wrapper>
-      <Wrapper className="my-5 max-h-[80svh] min-h-[60svh] bg-blue-400">
-        <section>
-          <h1>Featured Products</h1>
-          <hr />
+      <Categories />
+      <Wrapper className="h-fit  bg-blue-400 py-2 mx-4 px-2 pt-0 mt-2">
+        <section className=" ">
+          <h1 className="p-2">Featured Products</h1>
+
           <PriceCard />
         </section>
       </Wrapper>
