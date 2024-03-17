@@ -4,6 +4,9 @@ import Categories from "./_components/Categories";
 import Header from "./_components/Header";
 import Wrapper from "@/components/Wrapper";
 import Link from "next/link";
+import Footer from "./_components/Footer";
+import ContactForm from "./_components/ContactForm";
+import FAQ from "./_components/FAQ";
 
 export default function Home() {
   return (
@@ -20,18 +23,17 @@ export default function Home() {
           <PriceCard />
         </section>
       </Wrapper>
+      <FAQ />
+      <ContactForm />
+      <Footer />
+
       <Link href="/testAll/priceCard">test</Link>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, nemo
-        explicabo. Ullam molestias, similique, dolores obcaecati maxime saepe
-        sint eos suscipit voluptate accusamus nesciunt incidunt. Quaerat
-        accusamus commodi et sapiente! Pariatur, eos. Fugiat illum atque fuga,
-        corrupti soluta impedit ducimus, neque autem veniam illo tempore vero
-        quae? Laborum numquam, quis maxime praesentium quibusdam fuga at
-        reiciendis mollitia fugiat repudiandae iste. Debitis dolore mollitia
-        minima corporis ex vitae saepe distinctio sit maiores officia molestias
-        incidunt,
-      </p>
+      <br />
+      <Link href="/testAll/miniPriceCard">price card</Link>
+      <br />
+      <Link href="/testAll/accordianfaq">accordian</Link>
+      <br />
+
     </>
   );
 }
