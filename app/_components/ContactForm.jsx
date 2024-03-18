@@ -1,66 +1,126 @@
-export default function ContactForm() {
+"use client";
+
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { contactFormSchema } from "@/utils/contactFormSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+export default function page() {
+  const form = useForm({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      emai: "",
+      phoneNumber: "",
+      subject: "",
+      message: "",
+    },
+  });
+
+  function onSubmit(values) {
+    console.log(values);
+  }
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-screen-md px-4 py-8 lg:py-16">
-        <h2 className="mb-4 text-center text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-          Contact Us
+        <h2 className="mb-4 text-left text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+          Contact
         </h2>
-        <p className="mb-8 text-center font-light text-gray-500 dark:text-gray-400 sm:text-xl lg:mb-16">
-          Got a technical issue? Want to send feedback about a beta feature?
-          Need details about our Business plan? Let us know.
-        </p>
-        <form action="#" className="space-y-8">
-          <div>
-            <label
-              htmlFor="email"
-              className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Your email
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-              placeholder="name@flowbite.com"
-              required
+        {/* TODO make the form look like figma design */}
+        <div className="flex w-full justify-between">
+          <span className="">123-456-7890</span>
+          <span className="">info@example.com</span>
+          <span className="">3rd floor, Colombo, Sri Lanka</span>
+        </div>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="John Doe" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
-          <div>
-            <label
-              htmlFor="subject"
-              className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Subject
-            </label>
-            <input
-              type="text"
-              id="subject"
-              className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-              placeholder="Let us know how we can help you"
-              required
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="johndoe@example.com" {...field} />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
-          <div className="sm:col-span-2">
-            <label
-              htmlFor="message"
-              className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400"
-            >
-              Your message
-            </label>
-            <textarea
-              id="message"
-              rows="6"
-              className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-              placeholder="Leave a comment..."
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            className="bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 rounded-lg px-5 py-3 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 sm:w-fit"
-          >
-            Send message
-          </button>
-        </form>
+            <FormField
+              control={form.control}
+              name="phoneNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone Numbe</FormLabel>
+                  <FormControl>
+                    <Input placeholder="555-555555" {...field} />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="subject"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Subject</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Subject" {...field} />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Message</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Your Message"
+                      className="resize-none"
+                      rows="8"
+                      {...field}
+                    />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit">Send Message</Button>
+          </form>
+        </Form>
       </div>
     </section>
   );
