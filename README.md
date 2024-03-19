@@ -1,6 +1,6 @@
-# **FASION-BUG**
+# FASHION-BUG
 
-### fassion ecommerse site- name incoming
+## fassion ecommerse site- name incoming
 
 ### logo incoming
 
@@ -12,5 +12,17 @@
 - prisma orm
 - shadecn ui
 - next-auth v5
-  -stripe payments
+- stripe payments
 - zod validator
+
+## Project flow
+
+- Figma design
+- responsive ui code development
+- dbms design
+- data scraping and populating database for tests
+- authentication adoption
+- backend development
+- payment gateway implementation
+- final finishes
+- testing
