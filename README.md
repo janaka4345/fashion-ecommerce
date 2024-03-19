@@ -4,6 +4,8 @@
 
 ### logo incoming
 
+![logo](./logo.jpg')
+
 ### tech stack -
 
 - nextjs framework
@@ -26,3 +28,9 @@
 - payment gateway implementation
 - final finishes
 - testing
+
+# ERD
+
+![figma design](./figma-design.jpg')
+
+![erd](./fashion-ecom-auth.jpg')
