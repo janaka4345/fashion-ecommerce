@@ -15,7 +15,8 @@ datasource db {
 }
 enum UserRole {
   ADMIN
-  USER
+  BUYER
+  SELLER
 }
 
 model User {
@@ -25,7 +26,7 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
-  role          UserRole @default(USER)
+  role          UserRole @default(BUYER)
   accounts      Account[]
   sessions      Session[]
   isTwoFactorEnabled Boolean @default(false)
