@@ -47,20 +47,20 @@ model Feedback {
   rating       Int?
   reviews      String?
   dateSubmited DateTime @default(now())
-  user         User     @relation(fields: [userId], references: [id], onDelete: NoAction)
-  product      Product  @relation(fields: [productId], references: [id], onDelete: NoAction)
   userId       String
   productId    String
+  user         User     @relation(fields: [userId], references: [id], onDelete: NoAction)
+  product      Product  @relation(fields: [productId], references: [id], onDelete: NoAction)
 }
 
 model Order {
   id            String          @id @default(cuid())
   status        String
   placedTime    DateTime        @updatedAt
-  user          User            @relation(fields: [userId], references: [id], onDelete: NoAction)
   userId        String
   Product_Order Product_Order[]
   Invoice       Invoice[]
+  user          User            @relation(fields: [userId], references: [id], onDelete: NoAction)
 }
 
 model Invoice {
@@ -68,8 +68,8 @@ model Invoice {
   paymentDate   DateTime @default(now())
   status        String
   paymentMethod String
-  order         Order    @relation(fields: [orderId], references: [id], onDelete: NoAction)
   orderId       String
+  order         Order    @relation(fields: [orderId], references: [id], onDelete: NoAction)
   // shipping attribute fix
 }
 
@@ -77,10 +77,10 @@ model Product_Order {
   quantity  Int
   color     String?
   size      String?
-  order     Order   @relation(fields: [orderId], references: [id], onDelete: NoAction)
   orderId   String
-  product   Product @relation(fields: [productId], references: [id], onDelete: NoAction)
   productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: NoAction)
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: NoAction)
 
   @@id([orderId, productId])
 }
@@ -88,8 +88,8 @@ model Product_Order {
 model Cart {
   id           String         @id @default(cuid())
   userId       String
-  user         User           @relation(fields: [userId], references: [id])
   Product_Cart Product_Cart[]
+  user         User           @relation(fields: [userId], references: [id])
 }
 
 model Category {
@@ -107,32 +107,32 @@ model Product {
   name          String
   description   String
   sellerId      String
-  seller        User            @relation(fields: [sellerId], references: [id], onDelete: Cascade)
   Product_Cart  Product_Cart[]
-  category      Category        @relation(fields: [categoryId], references: [id], onDelete: NoAction)
   categoryId    String
   tags          Tags[]
   Images        Images[]
   Product_Order Product_Order[]
   Feedback      Feedback[]
+  seller        User            @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  category      Category        @relation(fields: [categoryId], references: [id], onDelete: NoAction)
 }
 
 //tags are  multivalued attribute of product
 model Tags {
-  tags      Product @relation(fields: [productId], references: [id])
   productId String
   tag       String
+  tags      Product @relation(fields: [productId], references: [id])
 
   @@id([productId, tag])
 }
 
 //images are multivalued attribute of product
 model Images {
-  images    Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
   image     String
   alt       String
   indexNo   Int     @default(autoincrement())
+  images    Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@id([productId, alt])
 }
@@ -155,8 +155,8 @@ model Product_Cart {
   quantity   Int      @default(0)
   date_added DateTime @updatedAt
   cartId     String
-  user       Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
   productId  String
+  user       Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
   product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
 
@@ -166,12 +166,12 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
