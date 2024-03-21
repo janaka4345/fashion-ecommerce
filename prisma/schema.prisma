@@ -9,10 +9,11 @@ generator client {
 }
 
 datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  directUrl         = env("DIRECT_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
+
 enum UserRole {
   ADMIN
   BUYER
@@ -20,32 +21,158 @@ enum UserRole {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?
-  role          UserRole @default(BUYER)
-  accounts      Account[]
-  sessions      Session[]
-  isTwoFactorEnabled Boolean @default(false)
+  id                    String                 @id @default(cuid())
+  name                  String?
+  email                 String?                @unique
+  emailVerified         DateTime?
+  image                 String?
+  stName                String?
+  city                  String?
+  province              String?
+  postcode              String?
+  password              String?
+  role                  UserRole               @default(BUYER)
+  accounts              Account[]
+  sessions              Session[]
+  isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
+  Cart                  Cart[]
+  Product               Product[]
+  Order                 Order[]
+  Feedback              Feedback[]
+}
+
+model Feedback {
+  id           String   @id @default(cuid())
+  rating       Int?
+  reviews      String?
+  dateSubmited DateTime @default(now())
+  user         User     @relation(fields: [userId], references: [id], onDelete: NoAction)
+  product      Product  @relation(fields: [productId], references: [id], onDelete: NoAction)
+  userId       String
+  productId    String
+}
+
+model Order {
+  id            String          @id @default(cuid())
+  status        String
+  placedTime    DateTime        @updatedAt
+  user          User            @relation(fields: [userId], references: [id], onDelete: NoAction)
+  userId        String
+  Product_Order Product_Order[]
+  Invoice       Invoice[]
+}
+
+model Invoice {
+  id            String   @id @default(cuid())
+  paymentDate   DateTime @default(now())
+  status        String
+  paymentMethod String
+  order         Order    @relation(fields: [orderId], references: [id], onDelete: NoAction)
+  orderId       String
+  // shipping attribute fix
+}
+
+model Product_Order {
+  quantity  Int
+  color     String?
+  size      String?
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: NoAction)
+  orderId   String
+  product   Product @relation(fields: [productId], references: [id], onDelete: NoAction)
+  productId String
+
+  @@id([orderId, productId])
+}
+
+model Cart {
+  id           String         @id @default(cuid())
+  userId       String
+  user         User           @relation(fields: [userId], references: [id])
+  Product_Cart Product_Cart[]
+}
+
+model Category {
+  id          String  @id @default(cuid())
+  name        String
+  description String
+  status      String?
+  image       String
+
+  Product Product[]
+}
+
+model Product {
+  id            String          @id @default(cuid())
+  name          String
+  description   String
+  sellerId      String
+  seller        User            @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  Product_Cart  Product_Cart[]
+  category      Category        @relation(fields: [categoryId], references: [id], onDelete: NoAction)
+  categoryId    String
+  tags          Tags[]
+  Images        Images[]
+  Product_Order Product_Order[]
+  Feedback      Feedback[]
+}
+
+//tags are  multivalued attribute of product
+model Tags {
+  tags      Product @relation(fields: [productId], references: [id])
+  productId String
+  tag       String
+
+  @@id([productId, tag])
+}
+
+//images are multivalued attribute of product
+model Images {
+  images    Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  image     String
+  alt       String
+  indexNo   Int     @default(autoincrement())
+
+  @@id([productId, alt])
+}
+
+model Inventory {
+  id        String  @id @default(cuid())
+  price     Float
+  size      String?
+  color     String?
+  quantity  Int     @default(0)
+  image_url String?
+  image_alt String
+}
+
+model Product_Cart {
+  id         String   @id @default(cuid())
+  color      String?
+  size       String?
+  status     String?
+  quantity   Int      @default(0)
+  date_added DateTime @updatedAt
+  cartId     String
+  user       Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -57,32 +184,31 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
-  id String @id @default(cuid())
-  email String
-  token String @unique
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
   expires DateTime
 
   @@unique([email, token])
 }
 
 model PasswordResetToken {
-  id String @id @default(cuid())
-  email String
-  token String @unique
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
   expires DateTime
 
   @@unique([email, token])
 }
 
 model TwoFactorToken {
-  id String @id @default(cuid())
-  email String
-  token String @unique
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
   expires DateTime
 
   @@unique([email, token])
@@ -92,7 +218,7 @@ model TwoFactorConfirmation {
   id String @id @default(cuid())
 
   userId String
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId])
 }
