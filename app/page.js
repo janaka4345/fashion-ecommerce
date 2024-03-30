@@ -35,6 +35,8 @@ export default function Home() {
       <br />
       <Link href="/testAll/contactform">contact form</Link>
       <br />
+      <Link href="/testAll/testCart">testCart</Link>
+      <br />
 
     </>
   );
