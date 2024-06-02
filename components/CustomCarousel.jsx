@@ -91,22 +91,22 @@ export default function CustomCarousel() {
 const carousalItems = [
   {
     id: 1,
-    src: "/carousel-1.svg",
+    src: "/cat1.jpg",
   },
   {
     id: 2,
-    src: "/carousel-2.svg",
+    src: "/cat2.jpg",
   },
   {
     id: 3,
-    src: "/carousel-3.svg",
+    src: "/cat1.jpg",
   },
   {
     id: 4,
-    src: "/carousel-4.svg",
+    src: "/cat2.jpg",
   },
   {
     id: 5,
-    src: "/carousel-5.svg",
+    src: "/cat1.jpg",
   },
 ];
