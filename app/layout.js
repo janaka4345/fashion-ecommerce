@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "./_components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Socials from "@/components/Socials";
-import { PreloadSprite } from "@/components/PreloadSprite";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -17,7 +16,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* <PreloadSprite /> */}
       {/* TODO check */}
       <body className={cn("relative font-sans antialiased", poppins.className)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
