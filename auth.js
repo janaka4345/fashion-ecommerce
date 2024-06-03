@@ -1,14 +1,11 @@
 import NextAuth from "next-auth"
 import { PrismaAdapter } from "@auth/prisma-adapter"
-// import prisma from './utils/prismaClient'
-import prisma from '@/'
+import prisma from './utils/prismaClient'
 import authConfig from "./auth.config"
-
-const prisma = new PrismaClient()
 
 export const {
     auth,
-    handlers: { GET, POST },
+    handlers,
     signIn,
     signOut,
 } = NextAuth({
