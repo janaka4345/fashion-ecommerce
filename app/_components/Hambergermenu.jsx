@@ -12,7 +12,7 @@ import Link from "next/link";
 export default function HamburgerMenu({ menuList }) {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger className="md:hidden">
         <span className="sr-only">Open main menu</span>
         <svg
           width="24"

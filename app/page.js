@@ -1,12 +1,11 @@
 import PriceCard from "@/components/PriceCard";
+import Wrapper from "@/components/Wrapper";
 import Banner from "./_components/Banner";
 import Categories from "./_components/Categories";
-import Header from "./_components/Header";
-import Wrapper from "@/components/Wrapper";
-import Link from "next/link";
-import Footer from "./_components/Footer";
 import ContactForm from "./_components/ContactForm";
 import FAQ from "./_components/FAQ";
+import Footer from "./_components/Footer";
+import Header from "./_components/Header";
 
 export default function Home() {
   return (
@@ -26,18 +25,6 @@ export default function Home() {
       <FAQ />
       <ContactForm />
       <Footer />
-
-      <Link href="/testAll/priceCard">test</Link>
-      <br />
-      <Link href="/testAll/miniPriceCard">price card</Link>
-      <br />
-      <Link href="/testAll/accordianfaq">accordian</Link>
-      <br />
-      <Link href="/testAll/contactform">contact form</Link>
-      <br />
-      <Link href="/testAll/testCart">testCart</Link>
-      <br />
-
     </>
   );
 }
