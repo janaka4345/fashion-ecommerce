@@ -1,5 +1,5 @@
-import PriceCard from "@/components/PriceCard";
-import Wrapper from "@/components/Wrapper";
+import PriceCard from "../components/PriceCard";
+import Wrapper from "../components/Wrapper";
 import Banner from "./_components/Banner";
 import Categories from "./_components/Categories";
 import ContactForm from "./_components/ContactForm";

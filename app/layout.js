@@ -1,9 +1,9 @@
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./_components/Navbar";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import Socials from "@/components/Socials";
+import { ThemeProvider } from "../components/ThemeProvider";
+import Socials from "../components/Socials";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 

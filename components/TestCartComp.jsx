@@ -5,8 +5,8 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
+} from "./ui/carousel";
+import { Card, CardContent } from "./ui/card";
 import { useEffect, useState } from "react";
 export default function TestCartComp() {
   const [api, setApi] = useState();

@@ -1,4 +1,4 @@
-import CustomCarousel from "@/components/CustomCarousel";
+import CustomCarousel from "../../components/CustomCarousel";
 export default function Banner() {
   return (
     <section className=" flex flex-col gap-2 bg-green-200 sm:flex-row  sm:gap-4">

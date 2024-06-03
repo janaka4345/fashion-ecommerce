@@ -1,6 +1,10 @@
-import Cart from "@/components/Cart";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Input } from "@/components/ui/input";
+import Cart from "../../components/Cart";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "../..//components/ui/avatar";
+import { Input } from "../../components/ui/input";
 import { Search } from "lucide-react";
 import Menubar from "./Menubar";
 

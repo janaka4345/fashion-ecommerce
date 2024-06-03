@@ -1,6 +1,5 @@
 "use client";
-
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 import {
   Form,
   FormControl,
@@ -8,13 +7,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { contactFormSchema } from "@/utils/contactFormSchema";
+} from "../../components/ui/form";
+import { contactFormSchema } from "../../utils/contactFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Input } from "../../components/ui/input";
+import { Textarea } from "../../components/ui/textarea";
 export default function page() {
   const form = useForm({
     resolver: zodResolver(contactFormSchema),

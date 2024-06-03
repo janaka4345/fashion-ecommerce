@@ -6,8 +6,8 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import { cn } from "@/lib/utils";
+} from "./ui/carousel";
+import { cn } from "../lib/utils";
 import Autoplay from "embla-carousel-autoplay";
 import { useEffect, useState } from "react";
 export default function CustomCarousel() {
