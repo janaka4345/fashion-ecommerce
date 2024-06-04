@@ -1,10 +1,10 @@
-import AuthProvider from "./_components/AuthProvider";
+import SocialAuth from "./_components/SocialAuth";
 
 export default function layout({ children }) {
   return (
     <div className="mt-10 flex flex-row items-center justify-center gap-2">
       <div className="w-[40dvw]">layout</div>
-      <AuthProvider />
+      <SocialAuth />
       <div>{children}</div>
     </div>
   );
