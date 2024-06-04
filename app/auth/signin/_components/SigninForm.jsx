@@ -14,7 +14,9 @@ import {
   FormMessage,
 } from "../../../../components/ui/form";
 import { Input } from "../../../../components/ui/input";
-import { loginFormSchema } from "../../../../lib/zodSchema";
+import { loginFormSchema } from "../../../../lib/formSchema";
+import { loginAction } from "../../../../serverActions/auth/loginAction";
+import { toast } from "sonner";
 
 export default function RegisterForm() {
   const form = useForm({
@@ -25,10 +27,27 @@ export default function RegisterForm() {
       remember: false,
     },
   });
-  function onSubmit(values) {
+  async function onSubmit(values) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    // console.log(values);
+    try {
+      const res = await loginAction(values);
+
+      // Generating the toaster message
+      res.success &&
+        toast.success(res.success, {
+          // description: 'My description',
+          duration: 1500,
+        });
+      res.error &&
+        toast.error(res.error, {
+          // description: 'My description',
+          duration: 1500,
+        });
+    } catch (error) {
+      console.log({ error });
+    }
   }
   return (
     <Form {...form}>
@@ -100,7 +119,11 @@ export default function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button className="w-full" type="submit">
+        <Button
+          className="w-full"
+          type="submit"
+          disabled={form.formState.isSubmitting}
+        >
           Sign in
         </Button>
         <p className="text-sm font-light text-gray-500 dark:text-gray-400">

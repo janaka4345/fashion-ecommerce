@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { Button } from "../../../../components/ui/button";
 import { Checkbox } from "../../../../components/ui/checkbox";
+import { toast } from "sonner";
+
 import {
   Form,
   FormControl,
@@ -14,7 +16,8 @@ import {
   FormMessage,
 } from "../../../../components/ui/form";
 import { Input } from "../../../../components/ui/input";
-import { registerSchema } from "../../../../lib/zodSchema";
+import { registerSchema } from "../../../../lib/formSchema";
+import { registerAction } from "../../../../serverActions/auth/registerAction";
 
 export default function RegisterForm() {
   const form = useForm({
@@ -28,10 +31,26 @@ export default function RegisterForm() {
       terms: false,
     },
   });
-  function onSubmit(values) {
+  async function onSubmit(values) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    try {
+      const res = await registerAction(values);
+
+      // Generating the toaster message
+      res.success &&
+        toast.success(res.success, {
+          // description: 'My description',
+          duration: 1500,
+        });
+      res.error &&
+        toast.error(res.error, {
+          // description: 'My description',
+          duration: 1500,
+        });
+    } catch (error) {
+      console.log({ error });
+    }
   }
   return (
     <Form {...form}>
@@ -152,11 +171,17 @@ export default function RegisterForm() {
                   You can manage your mobile notifications in the{" "}
                   <Link href="/examples/forms">mobile settings</Link> page.
                 </FormDescription> */}
+                <FormMessage />
               </div>
             </FormItem>
           )}
         />
-        <Button className="w-full" type="submit">
+
+        <Button
+          className="w-full"
+          type="submit"
+          disabled={form.formState.isSubmitting}
+        >
           Create an account
         </Button>
         <p className="text-sm font-light text-gray-500 ">
