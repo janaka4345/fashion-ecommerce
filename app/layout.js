@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./_components/Navbar";
 import { ThemeProvider } from "../components/ThemeProvider";
 import Socials from "../components/Socials";
+import { Toaster } from "../components/ui/sonner";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -22,6 +23,15 @@ export default function RootLayout({ children }) {
           <Navbar />
           <Socials />
           {children}
+          <Toaster richColors
+          // icons={{
+          //   success: <SuccessIcon />,
+          //   info: <InfoIcon />,
+          //   warning: <WarningIcon />,
+          //   error: <ErrorIcon />,
+          //   loading: <LoadingIcon />,
+          // }} 
+          />
         </ThemeProvider>
       </body>
     </html>
