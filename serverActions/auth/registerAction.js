@@ -13,7 +13,7 @@ export const registerAction = async (payload) => {
     // TODO check conforma password 
     const { email, firstName, lastName, password } = validation.data
     const response = await prisma.user.create({
-        data: { email, firstName, lastName, password }
+        data: { email, name: `${firstName} ${lastName}`, password }
     })
     //TODO send verification enamil
     //TODO existing emaul check

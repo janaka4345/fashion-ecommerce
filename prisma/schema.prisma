@@ -20,18 +20,17 @@ enum UserRole {
   SELLER
 }
 
+enum ShippingMethod {
+  DELIVERY
+  PICKUP
+}
+
 model User {
   id                    String                 @id @default(cuid())
   name                  String?
-  firstName             String?
-  lastName              String?
   email                 String?                @unique
   emailVerified         DateTime?
   image                 String?
-  stName                String?
-  city                  String?
-  province              String?
-  postcode              String?
   password              String?
   role                  UserRole               @default(BUYER)
   accounts              Account[]
@@ -42,6 +41,19 @@ model User {
   Product               Product[]
   Order                 Order[]
   Feedback              Feedback[]
+  Address               Address[]
+}
+
+model Address {
+  id       String    @id @default(cuid())
+  type     String
+  stName   String
+  city     String?
+  province String?
+  postcode String?
+  user     User      @relation(fields: [userId], references: [id])
+  userId   String
+  Invoice  Invoice[]
 }
 
 model Feedback {
@@ -51,8 +63,8 @@ model Feedback {
   dateSubmited DateTime @default(now())
   userId       String
   productId    String
-  user         User     @relation(fields: [userId], references: [id], onDelete: NoAction)
-  product      Product  @relation(fields: [productId], references: [id], onDelete: NoAction)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product      Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
 
 model Order {
@@ -62,17 +74,19 @@ model Order {
   userId        String
   Product_Order Product_Order[]
   Invoice       Invoice[]
-  user          User            @relation(fields: [userId], references: [id], onDelete: NoAction)
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Invoice {
-  id            String   @id @default(cuid())
-  paymentDate   DateTime @default(now())
+  id            String         @id @default(cuid())
+  paymentDate   DateTime       @default(now())
   status        String
   paymentMethod String
   orderId       String
-  order         Order    @relation(fields: [orderId], references: [id], onDelete: NoAction)
-  // shipping attribute fix
+  order         Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  shippingethod ShippingMethod
+  delivery      Address?       @relation(fields: [addressId], references: [id])
+  addressId     String?
 }
 
 model Product_Order {
@@ -81,8 +95,8 @@ model Product_Order {
   size      String?
   orderId   String
   productId String
-  product   Product @relation(fields: [productId], references: [id], onDelete: NoAction)
-  order     Order   @relation(fields: [orderId], references: [id], onDelete: NoAction)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
 
   @@id([orderId, productId])
 }
@@ -111,16 +125,16 @@ model Product {
   sellerId      String
   Product_Cart  Product_Cart[]
   categoryId    String
-  tags          Tags[]
+  tags          Product_Tags[]
   Images        Images[]
   Product_Order Product_Order[]
   Feedback      Feedback[]
   seller        User            @relation(fields: [sellerId], references: [id], onDelete: Cascade)
-  category      Category        @relation(fields: [categoryId], references: [id], onDelete: NoAction)
+  category      Category        @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 }
 
 //tags are  multivalued attribute of product
-model Tags {
+model Product_Tags {
   productId String
   tag       String
   tags      Product @relation(fields: [productId], references: [id])
