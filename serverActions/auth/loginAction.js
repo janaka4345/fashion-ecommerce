@@ -14,7 +14,7 @@ export const loginAction = async (payload) => {
         await signIn('credentials', {
             email,
             password,
-            //  redirectTo:''
+            redirectTo: '/'
         })
     } catch (error) {
         console.log({ error });

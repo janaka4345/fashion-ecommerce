@@ -1,12 +1,7 @@
-import Cart from "../../components/Cart";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "../..//components/ui/avatar";
 import { Input } from "../../components/ui/input";
 import { Search } from "lucide-react";
 import Menubar from "./Menubar";
+import AuthSection from "./AuthSection";
 
 export default function Header() {
   return (
@@ -25,11 +20,7 @@ export default function Header() {
         </div>
         <div className="col-start-3 col-end-4 row-start-2 row-end-3 h-full bg-purple-500 p-4 align-middle sm:col-start-3 sm:col-end-4 sm:row-start-1 sm:row-end-2  ">
           <div className="flex flex-row  justify-center gap-3 sm:justify-end ">
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <Cart />
+            <AuthSection />
           </div>
         </div>
       </div>
