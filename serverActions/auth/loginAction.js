@@ -9,15 +9,15 @@ export const loginAction = async (payload) => {
         return { error: 'Invalid data received' }
     }
     const { email, password } = validation.data
-    console.log(validation);
-    try {
-        await signIn('credentials', {
-            email,
-            password,
-            redirectTo: '/'
-        })
-    } catch (error) {
-        console.log({ error });
-    }
+    // console.log(validation);
+    // try {
+    await signIn('credentials', {
+        email,
+        password,
+        redirectTo: '/'
+    })
+    // } catch (error) {
+    // console.log({ error });
+    // }
     return { success: 'Data submitted successfully' }
 }
