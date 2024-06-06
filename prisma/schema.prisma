@@ -38,10 +38,23 @@ model User {
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
   Cart                  Cart[]
-  Product               Product[]
-  Order                 Order[]
-  Feedback              Feedback[]
-  Address               Address[]
+
+  Order    Order[]
+  Feedback Feedback[]
+  Address  Address[]
+  Shop     Shop?
+}
+
+model Shop {
+  id          String  @id @default(cuid())
+  name        String  @unique
+  logo        String
+  description String
+  rating      String?
+  seller      User    @relation(fields: [sellerId], references: [id])
+
+  sellerId String    @unique
+  Product  Product[]
 }
 
 model Address {
@@ -122,15 +135,15 @@ model Product {
   id            String          @id @default(cuid())
   name          String
   description   String
-  sellerId      String
-  Product_Cart  Product_Cart[]
   categoryId    String
+  Product_Cart  Product_Cart[]
   tags          Product_Tags[]
   Images        Images[]
   Product_Order Product_Order[]
   Feedback      Feedback[]
-  seller        User            @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  shop          Shop            @relation(fields: [shopId], references: [id], onDelete: Cascade)
   category      Category        @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  shopId        String
 }
 
 //tags are  multivalued attribute of product
