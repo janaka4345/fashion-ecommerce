@@ -163,7 +163,7 @@ model Images {
   indexNo   Int     @default(autoincrement())
   images    Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
-  @@id([productId, alt])
+  @@id([productId, indexNo])
 }
 
 model Inventory {
