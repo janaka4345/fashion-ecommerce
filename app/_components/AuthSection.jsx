@@ -4,14 +4,17 @@ import Cart from "../../components/Cart";
 import User from "../../components/User";
 import { cn } from "../../lib/utils";
 import { buttonVariants } from "../../components/ui/button";
+import { Suspense } from "react";
 
 export default async function AuthSection() {
   const session = await auth();
   if (session?.user) {
     return (
       <>
-        <User session={session} />
-        <Cart />
+        <Suspense fallback={<h1>loading...</h1>}>
+          <User session={session} />
+          <Cart />
+        </Suspense>
       </>
     );
   } else {
