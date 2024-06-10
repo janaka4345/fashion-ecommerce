@@ -36,11 +36,24 @@ export default function CreateProduct({ categories, session }) {
     },
   });
 
+  const fileRef = form.register("images");
+
   async function onSubmit(values) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    // console.log(values);
-    await createAProduct({ values, session });
+    const data = new FormData();
+
+    for (const key in values) {
+      const value = values[key];
+      if (key != "images") {
+        data.append(key, value);
+      } else {
+        for (const key2 in value) {
+          const value2 = value[key2];
+          data.append(key2, value2);
+        }
+      }
+    }
+
+    await createAProduct({ data, session });
   }
   return (
     <Form {...form}>
@@ -79,7 +92,15 @@ export default function CreateProduct({ categories, session }) {
             <FormItem>
               <FormLabel>Upload project images</FormLabel>
               <FormControl>
-                <Input placeholder="images of your product" {...field} />
+                <Input
+                  type="file"
+                  multiple
+                  placeholder="images of your product"
+                  // onChange={(event) => {
+                  //   field.onChange(event.target?.files?.[0] ?? undefined);
+                  // }}
+                  {...fileRef}
+                />
               </FormControl>
 
               <FormMessage />
