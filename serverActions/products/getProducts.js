@@ -1,82 +1,68 @@
 'use server'
 
-import { cloudConfig } from "../../cloudinary.config"
-import { createProductFormSchema } from "../../utils/accountsFormSchema"
-import { v2 as cloudinary } from "cloudinary";
 import prisma from "../../utils/prismaClient"
-export const createAProduct = async ({ data, session }) => {
-    // console.log(data.get('0'));
-    // console.log(Object.fromEntries(data.entries()));
-    const validatedFields = createProductFormSchema.safeParse(Object.fromEntries(data.entries()))
-
-    console.log(validatedFields);
-    for (let index = 0; index < data.get('length'); index++) {
-
-        const file = data.get(`${index}`);
-        const arrayBuffer = await file.arrayBuffer()
-        const buffer = new Uint8Array(arrayBuffer)
-
-        const response = await new Promise((resolve, reject) => {
-            cloudConfig
-            cloudinary.uploader.upload_stream({}, (error, result) => {
-                if (error) {
-                    reject(error)
-                    return
-                }
-                console.log({ result });
-
-                resolve(result)
-            }).end(buffer)
-        })
-        console.log({ response });
-
-    }
-
-    // const data2 = data.get('images')
-    // console.log(data2);
-
-
-    if (!validatedFields.success) {
-        return { error: 'Invalid Fields' }
-    }
-
-    const { name, description, categoryId, } = validatedFields.data
-
+export const getAllProductsByShopId = async ({ shopId }) => {
     try {
-        const { id: shopId } = await prisma.shop.findFirst({
+        const products = await prisma.product.findMany({
             where: {
-                sellerId: session.id
+                shopId: shopId
             },
             select: {
-                id: true
+                id: true,
+                name: true,
+                categoryId: true,
+                description: true,
+                Images: {
+                    select: {
+                        image: true,
+                        alt: true
+                    }
+                },
+                tags: true,
+
             }
         })
-        console.log({ shopId });
-        await prisma.product.create({
-            data: {
-                name,
-                description,
-                categoryId,
-                shopId,
+        // console.log(products);
+        return products
+    } catch (error) {
+        console.log(error);
+        return { error: 'Something went wrong!' }
+    }
+}
+
+export const getAllProducts = async () => {
+    try {
+        const products = await prisma.product.findMany({
+            select: {
+                id: true,
+                categoryId: true,
+                description: true,
                 Images: {
-                    create: [{
-                        image: 'a',
-                        alt: 'b'
-                    },
-                    {
-                        image: 'a',
-                        alt: 'b'
-                    },
-                    {
-                        image: 'a',
-                        alt: 'b'
-                    }]
+                    select: {
+                        image: true,
+                        alt: true
+                    }
+                },
+                tags: true,
+                name: true,
+                category: {
+                    select: {
+                        name: true
+                    }
+                },
+                shop: {
+                    select: {
+                        id: true,
+                        logo: true,
+                        name: true,
+                        rating
+                    }
                 }
 
             }
         })
-        console.log('added');
-        return { success: 'Your  new product has been added' }
+        // console.log(products);
+        return products
     } catch (error) {
         console.log(error);
         return { error: 'Something went wrong!' }
