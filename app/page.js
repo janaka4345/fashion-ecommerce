@@ -6,6 +6,9 @@ import ContactForm from "./_components/ContactForm";
 import FAQ from "./_components/FAQ";
 import Footer from "./_components/Footer";
 import Header from "./_components/Header";
+import { product } from "./testall/_data/data";
+
+
 
 export default function Home() {
   return (
@@ -19,7 +22,7 @@ export default function Home() {
         <section className=" ">
           <h1 className="p-2">Featured Products</h1>
 
-          <PriceCard />
+          <PriceCard product={product} />
         </section>
       </Wrapper>
       <FAQ />
