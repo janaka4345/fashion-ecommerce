@@ -22,7 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../components/ui/select";
-import { createAProduct } from "../../../serverActions/products/getProducts";
+import { createAProduct } from "../../../serverActions/products/createProducts";
 
 export default function CreateProduct({ categories, session }) {
   // console.log(categories);
