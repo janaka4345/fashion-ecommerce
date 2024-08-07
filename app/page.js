@@ -6,6 +6,7 @@ import ContactForm from "./_components/ContactForm";
 import FAQ from "./_components/FAQ";
 import Footer from "./_components/Footer";
 import Header from "./_components/Header";
+// import MaintenanceDialog from "./_components/MaintenanceDialog";
 import { product } from "./testall/_data/data";
 
 
@@ -28,6 +29,7 @@ export default function Home() {
       <FAQ />
       <ContactForm />
       <Footer />
+      {/* {<MaintenanceDialog />} */}
     </>
   );
 }
