@@ -68,4 +68,4 @@ ENV PORT=3000
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
 # Or use docker run -p 3000:3000 -e HOSTNAME=0.0.0.0 <image_name> for recomended use
 
-CMD HOSTNAME="0.0.0.0" node server.js
+CMD  ["node" ,"server.js"]
